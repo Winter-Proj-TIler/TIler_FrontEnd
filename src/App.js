@@ -1,5 +1,12 @@
+import { CookiesProvider } from "react-cookie";
+import Router from "./router/Router";
+
 function App() {
-  return <>app</>
+  return (
+    <CookiesProvider>
+      <Router />
+    </CookiesProvider>
+  );
 }
 
 export default App;
