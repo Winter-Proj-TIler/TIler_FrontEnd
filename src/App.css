@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  transition: background-color 0.2s;
+  outline: none;
+  border: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
