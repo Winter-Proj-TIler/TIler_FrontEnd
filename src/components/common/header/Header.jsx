@@ -1,5 +1,5 @@
 import { Logo, Light, Dark, Search, Write } from "../../../assets";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useDark from "../../../hooks/useDark";
 import useModal from "../../../hooks/useModal";
 import Dropdown from "../Dropdown";
@@ -9,6 +9,7 @@ export default function Header() {
   const { dark, setDark } = useDark();
   const { open } = useModal();
   const token = cookie.get("accessToken");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setDark(e.target.checked);
@@ -16,6 +17,10 @@ export default function Header() {
 
   const handleLogin = () => {
     open("login");
+  };
+
+  const handleDrop = (e) => {
+    navigate(`/${e.target.id}`);
   };
 
   return (
@@ -58,10 +63,21 @@ export default function Header() {
                 />
               }
             >
-              <h1>내 블로그</h1>
-              <h1>팔로잉 관리</h1>
-              <h1>설정</h1>
-              <h1 className="text-red-400">로그아웃</h1>
+              <h1 onClick={handleDrop} id="유저명">
+                내 블로그
+              </h1>
+              <h1 onClick={handleDrop} id="follow">
+                팔로잉 관리
+              </h1>
+              <h1 onClick={handleDrop} id="setting">
+                설정
+              </h1>
+              <h1
+                onClick={() => console.log("useAuth hook 만들어서 완성시키기")}
+                className="text-red-400"
+              >
+                로그아웃
+              </h1>
             </Dropdown>
           </>
         ) : (
