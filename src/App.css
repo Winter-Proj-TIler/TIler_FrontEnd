@@ -4,6 +4,9 @@
 
 * {
   transition: background-color 0.2s;
+}
+
+input {
   outline: none;
   border: none;
 }
