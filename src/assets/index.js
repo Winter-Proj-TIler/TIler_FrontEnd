@@ -8,6 +8,8 @@ import { ReactComponent as Comment } from "./Comment.svg";
 import { ReactComponent as Like } from "./Like.svg";
 import BackArrow from "./Back.svg";
 import Write from "./Write.svg";
+import Image from "./Image.svg";
+import Upload from "./Upload.svg";
 
 export {
   Dark,
@@ -20,4 +22,6 @@ export {
   Github,
   BackArrow,
   Write,
+  Image,
+  Upload,
 };

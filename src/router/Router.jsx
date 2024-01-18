@@ -12,6 +12,7 @@ export default function Router() {
         <Route element={<Layout back />} path="/">
           <Route element={<_.Search />} path="search" />
           <Route element={<_.Follow />} path="follow" />
+          <Route element={<_.Write />} path="write" />
         </Route>
       </Routes>
     </BrowserRouter>

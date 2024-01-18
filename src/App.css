@@ -6,9 +6,33 @@
   transition: background-color 0.2s;
 }
 
-input {
+input,
+textarea {
   outline: none;
   border: none;
+  resize: none;
+}
+
+div::-webkit-scrollbar {
+  width: 5px;
+  background-color: none;
+}
+
+div::-webkit-scrollbar-thumb {
+  width: 5px;
+  background-color: gray;
+  border-radius: 50px;
+}
+
+textarea::-webkit-scrollbar {
+  width: 5px;
+  background-color: none;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  width: 5px;
+  background-color: gray;
+  border-radius: 50px;
 }
 
 html::-webkit-scrollbar {
