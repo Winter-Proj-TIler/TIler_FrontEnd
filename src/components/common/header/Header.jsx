@@ -69,7 +69,7 @@ export default function Header() {
               <h1 onClick={handleDrop} id="follow">
                 팔로잉 관리
               </h1>
-              <h1 onClick={handleDrop} id="setting">
+              <h1 onClick={handleDrop} id="settings">
                 설정
               </h1>
               <h1

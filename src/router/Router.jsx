@@ -13,6 +13,7 @@ export default function Router() {
           <Route element={<_.Search />} path="search" />
           <Route element={<_.Follow />} path="follow" />
           <Route element={<_.Write />} path="write" />
+          <Route element={<_.Settings />} path="settings" />
         </Route>
       </Routes>
     </BrowserRouter>
