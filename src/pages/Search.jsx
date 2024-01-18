@@ -1,3 +1,9 @@
+import SearchBar from "../components/search/SearchBar";
+
 export const Search = () => {
-  return <h1 className="dark:text-neutral-100">test</h1>;
+  return (
+    <div className="flex flex-col items-center p-3 w-full dark:text-neutral-100">
+      <SearchBar />
+    </div>
+  );
 };
