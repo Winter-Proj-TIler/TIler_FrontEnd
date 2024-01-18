@@ -1,6 +1,6 @@
 import { Google, Github } from "../../../assets";
 import useModal from "../../../hooks/useModal";
-import Input from "../../Input";
+import Input from "../../common/Input";
 
 export const Login = () => {
   const { open } = useModal();

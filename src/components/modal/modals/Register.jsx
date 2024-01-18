@@ -1,5 +1,5 @@
 import useModal from "../../../hooks/useModal";
-import Input from "../../Input";
+import Input from "../../common/Input";
 
 export const Register = () => {
   const { open } = useModal();

@@ -1,6 +1,7 @@
-import { Like, Comment } from "../assets";
-import { calcDate } from "../utils/calcDate";
-import useDark from "../hooks/useDark";
+import { Like, Comment } from "../../assets";
+import { calcDate } from "../../utils/calcDate";
+import Dot from "./Dot";
+import useDark from "../../hooks/useDark";
 
 export default function Post({ data }) {
   const { dark } = useDark();
@@ -26,13 +27,13 @@ export default function Post({ data }) {
               {data.writer}
             </h1>
           </div>
-          <div className="w-1 h-1 bg-neutral-400 dark:bg-neutral-600 rounded-full" />
+          <Dot />
           <div>
             <h1 className="text-neutral-400 dark:text-neutral-600 text-xs">
               {calcDate(data.createdAt)}
             </h1>
           </div>
-          <div className="w-1 h-1 bg-neutral-400 dark:bg-neutral-600 rounded-full" />
+          <Dot />
           <div className="flex items-center gap-1">
             <div className="flex items-center gap-[3px]">
               <Comment fill={dark ? "#525252" : "#9ca3af"} />
