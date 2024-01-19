@@ -7,13 +7,20 @@ export default function Post({ data }) {
   const { dark } = useDark();
 
   return (
-    <div className="w-[18rem] shadow-lg dark:bg-neutral-900 self-start cursor-pointer bg-neutral-100 rounded-lg transition-all duration-75 hover:transform hover:translate-y-[-4px]">
-      <img
-        src="/tmp.png"
-        alt=""
-        className="rounded-tr-[0.45rem] rounded-tl-[0.45rem] object-cover"
-      />
-      <div className="min-h-48 flex flex-col justify-between p-3">
+    <div className="w-[18rem] h-[22rem] shadow-lg dark:bg-neutral-900 self-start cursor-pointer bg-neutral-100 rounded-lg transition-all duration-75 hover:transform hover:translate-y-[-4px]">
+      {data.mainImg && (
+        <img
+          src={data.mainImg}
+          alt=""
+          className="h-10rem rounded-tr-[0.45rem] rounded-tl-[0.45rem] object-cover"
+        />
+      )}
+
+      <div
+        className={`${
+          data.mainImg ? "h-[calc(100%-10.18rem)]" : "h-full"
+        } flex flex-col justify-between p-3`}
+      >
         <div>
           <h1 className="text-lg font-bold dark:text-neutral-100">
             {data.title}
