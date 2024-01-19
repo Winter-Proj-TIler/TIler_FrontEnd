@@ -5,5 +5,6 @@ module.exports = {
     extend: {},
   },
   darkMode: "class",
+  mode: "jit",
   plugins: [],
 };
