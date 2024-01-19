@@ -33,7 +33,7 @@ export const Login = () => {
               </span>
             </h1>
           </div>
-          <button className="px-8 py-2 bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-50 rounded-md">
+          <button className="px-8 py-2 bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-50 rounded-md">
             로그인
           </button>
         </div>
@@ -45,19 +45,19 @@ export const Login = () => {
           </h1>
           <hr className="absolute w-full bg-gray-900 dark:bg-neutral-50 h-[1px]" />
         </div>
-        <div className="p-3 bg-neutral-200 dark:bg-neutral-700 rounded-md cursor-pointer flex justify-center items-center relative">
+        <div className="p-3 bg-neutral-100 dark:bg-neutral-700 rounded-md cursor-pointer flex justify-center items-center relative">
           <img
             src={Google}
             alt=""
-            className="absolute left-2 w-9 h-9 rounded-full p-2 bg-slate-100 dark:bg-neutral-600"
+            className="absolute left-2 w-9 h-9 rounded-full p-2 bg-[#ffffff] dark:bg-neutral-600"
           />
           <h1 className="dark:text-neutral-50">Google로 로그인</h1>
         </div>
-        <div className="p-3 bg-neutral-200 dark:bg-neutral-700 rounded-md cursor-pointer flex justify-center items-center relative">
+        <div className="p-3 bg-neutral-100 dark:bg-neutral-700 rounded-md cursor-pointer flex justify-center items-center relative">
           <img
             src={Github}
             alt=""
-            className="absolute left-2 w-9 h-9 rounded-full p-2 bg-slate-100 dark:bg-neutral-600"
+            className="absolute left-2 w-9 h-9 rounded-full p-2 bg-[#ffffff] dark:bg-neutral-600"
           />
           <h1 className="dark:text-neutral-50">Github로 로그인</h1>
         </div>

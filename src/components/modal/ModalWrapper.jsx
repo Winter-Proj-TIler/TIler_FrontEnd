@@ -23,7 +23,7 @@ export default function ModalWrapper() {
       } flex justify-center items-center z-10 bg-black/60 backdrop-blur-lg w-full h-full`}
       onClick={handleClose}
     >
-      <div className="min-w-[30rem] min-h-[25rem] p-3 pb-9 rounded-lg bg-neutral-50 dark:bg-neutral-950">
+      <div className="min-w-[30rem] min-h-[25rem] p-3 pb-9 rounded-lg bg-[#ffffff] dark:bg-neutral-900">
         {Active && <Active />}
       </div>
     </div>

@@ -26,7 +26,7 @@ export const Register = () => {
               로그인
             </span>
           </h1>
-          <button className="px-8 py-2 bg-neutral-200 dark:bg-neutral-800 dark:text-neutral-50 rounded-md">
+          <button className="px-8 py-2 bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-50 rounded-md">
             회원가입
           </button>
         </div>

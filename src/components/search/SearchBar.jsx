@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Search } from "../../assets";
 import Dropdown from "../common/Dropdown";
 import Input from "../common/Input";
+import SearchIcon from "./SearchIcon";
 
 export default function SearchBar() {
   const [sort, setSort] = useState({
@@ -18,11 +18,11 @@ export default function SearchBar() {
 
   return (
     <div className="flex items-center relative">
-      <div className="flex items-center rounded-md bg-neutral-200 dark:bg-neutral-800 w-[36rem] h-[1.3rem] p-3 box-content">
-        <img src={Search} alt="" className="dark:invert" />
+      <div className="flex items-center rounded-md bg-neutral-100 dark:bg-neutral-800 w-[36rem] h-[1.3rem] p-3 box-content">
+        <SearchIcon />
         <Input placeholder="검색어를 입력하세요" />
       </div>
-      <div className="py-1 w-[5.5rem] bg-neutral-300 dark:bg-neutral-900 flex justify-center item-center absolute right-2 rounded-md">
+      <div className="py-1 w-[5.5rem] bg-neutral-200 dark:bg-neutral-900 flex justify-center item-center absolute right-2 rounded-md">
         <Dropdown value={sort.view}>
           <h1 id="all" onClick={handleClick}>
             전체
