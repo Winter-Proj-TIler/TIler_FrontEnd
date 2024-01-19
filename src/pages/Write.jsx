@@ -13,14 +13,9 @@ export const Write = () => {
     setData({ ...data, [e.target.id]: e.target.value });
   };
 
-  console.log(data);
-
   return (
-    <div className="grid grid-cols-[49%_1%_49%] place-content-center gap-4 w-full h-[89vh]">
+    <div className="flex place-content-center w-full h-screen">
       <WriteMD value={data} action={handleChange} />
-      <div className="flex justify-center items-center">
-        <div className="w-[1px] h-[52rem] bg-neutral-950 dark:bg-neutral-100" />
-      </div>
       <PreviewMD value={data} />
     </div>
   );
