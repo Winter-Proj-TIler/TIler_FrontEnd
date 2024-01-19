@@ -7,7 +7,7 @@ export const Layout = ({ back }) => {
   return (
     <>
       <ModalWrapper />
-      <div className="flex flex-col items-center p-5 gap-5 dark:bg-neutral-950 min-h-screen">
+      <div className="flex flex-col items-center gap-5 p-5 min-h-screen dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100">
         {back ? <Back /> : <Header />}
         <Outlet />
       </div>
