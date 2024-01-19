@@ -1,9 +1,11 @@
-import { Logo, Light, Dark, Search, Write } from "../../../assets";
+import { Logo } from "../../../assets";
 import { Link, useNavigate } from "react-router-dom";
 import useDark from "../../../hooks/useDark";
 import useModal from "../../../hooks/useModal";
 import Dropdown from "../Dropdown";
 import { cookie } from "../../../utils/cookies";
+import { Icon } from "@iconify/react";
+import SearchIcon from "../../search/SearchIcon";
 
 export default function Header() {
   const { dark, setDark } = useDark();
@@ -29,7 +31,7 @@ export default function Header() {
       <div className="absolute right-3 flex items-center gap-2">
         <label
           htmlFor="colorMode"
-          className="flex cursor-pointer justify-center items-center w-9 h-9 rounded-full hover:bg-neutral-200 hover:dark:bg-neutral-300 dark:invert"
+          className="flex cursor-pointer justify-center items-center w-9 h-9 rounded-full hover:bg-neutral-200 hover:dark:bg-neutral-700"
         >
           <input
             className="hidden"
@@ -37,21 +39,29 @@ export default function Header() {
             type="checkbox"
             onChange={handleChange}
           />
-          <img src={dark ? Dark : Light} alt="" />
+          <Icon
+            icon={dark ? "ph:moon-fill" : "ph:sun-bold"}
+            width="1.5rem"
+            color={dark ? "#ffffff" : "#000000"}
+          />
         </label>
         <Link
           to="/search"
-          className="flex justify-center items-center w-9 h-9 rounded-full transition-all duration-100 hover:bg-neutral-200 hover:dark:bg-neutral-300 dark:invert"
+          className="flex justify-center items-center w-9 h-9 rounded-full transition-all duration-100 hover:bg-neutral-200 hover:dark:bg-neutral-700"
         >
-          <img src={Search} alt="" />
+          <SearchIcon />
         </Link>
         {token ? (
           <>
             <Link
               to="write"
-              className="flex justify-center items-center w-9 h-9 rounded-full hover:bg-neutral-200 hover:dark:bg-neutral-300 dark:invert"
+              className="flex justify-center items-center w-9 h-9 rounded-full hover:bg-neutral-200 hover:dark:bg-neutral-700"
             >
-              <img src={Write} alt="" />
+              <Icon
+                icon="mdi:pencil"
+                width="1.5rem"
+                color={dark ? "#ffffff" : "#000000"}
+              />
             </Link>
             <Dropdown
               value={
