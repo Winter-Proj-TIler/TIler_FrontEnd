@@ -2,12 +2,22 @@ import { Like, Comment } from "../../assets";
 import { calcDate } from "../../utils/calcDate";
 import Dot from "./Dot";
 import useDark from "../../hooks/useDark";
+import { useNavigate } from "react-router-dom";
 
 export default function Post({ data }) {
   const { dark } = useDark();
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/detail/${data.postId}`);
+  };
+
   return (
-    <div className="w-[18rem] h-[22rem] shadow-lg dark:bg-neutral-900 self-start cursor-pointer bg-neutral-100 rounded-lg transition-all duration-75 hover:transform hover:translate-y-[-4px]">
+    <div
+      onClick={handleClick}
+      className="w-[18rem] h-[22rem] shadow-lg dark:bg-neutral-900 self-start cursor-pointer bg-neutral-100 rounded-lg transition-all duration-75 hover:transform hover:translate-y-[-4px]"
+    >
       {data.mainImg && (
         <img
           src={data.mainImg}
@@ -29,7 +39,11 @@ export default function Post({ data }) {
         </div>
         <div className="flex items-center gap-1">
           <div className="flex items-center gap-1">
-            <img src="/prf.png" alt="" className="w-6 h-6 rounded-full" />
+            <img
+              src={data.userProfile}
+              alt=""
+              className="w-6 h-6 rounded-full"
+            />
             <h1 className="text-neutral-400 dark:text-neutral-600 text-xs">
               {data.writer}
             </h1>
@@ -45,13 +59,13 @@ export default function Post({ data }) {
             <div className="flex items-center gap-[3px]">
               <Comment fill={dark ? "#525252" : "#9ca3af"} />
               <h1 className="text-neutral-400 dark:text-neutral-600 text-xs">
-                0개
+                {data.commentCnt}개
               </h1>
             </div>
             <div className="flex items-center gap-[3px]">
               <Like fill={dark ? "#525252" : "#9ca3af"} />
               <h1 className="text-neutral-400 dark:text-neutral-600 text-xs">
-                0개
+                {data.likeCnt}개
               </h1>
             </div>
           </div>
