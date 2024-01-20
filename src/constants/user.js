@@ -1,0 +1,36 @@
+export const userData = {
+  user: {
+    username: "Dev-songju",
+    statusMsg: "상태 메세지",
+    following: 2,
+    follower: 2,
+    profileImg: "/prf.png",
+    email: "dhthdwn7920@gmail.com",
+  },
+  posts: [
+    {
+      postId: 1,
+      title: "제목입니다",
+      contents: "내용입니다",
+      writer: "작성자입니다",
+      userProfile: "/prf.png",
+      mainImg: "/tmp.png",
+      commentCnt: 2,
+      likeCnt: 2,
+      tags: ["Node.js", "BackEnd"],
+      createdAt: "2022-05-20 오후 10:30:20",
+    },
+    {
+      postId: 2,
+      title: "제목입니다",
+      contents: "내용입니다",
+      writer: "작성자입니다",
+      userProfile: "/prf.png",
+      mainImg: "/tmp.png",
+      commentCnt: 2,
+      likeCnt: 2,
+      tags: ["Node.js", "BackEnd"],
+      createdAt: "2022-05-20 오후 10:30:20",
+    },
+  ],
+};
