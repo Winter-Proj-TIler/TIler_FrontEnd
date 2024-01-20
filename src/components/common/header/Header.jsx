@@ -25,9 +25,18 @@ export default function Header() {
     navigate(`/${e.target.id}`);
   };
 
+  const handleHome = () => {
+    navigate("/");
+  };
+
   return (
     <div className="relative flex select-none justify-center items-center bg-neutral-100 dark:bg-neutral-900 w-3/4 h-6 rounded-full p-4 box-content">
-      <img src={Logo} alt="" className="dark:invert" />
+      <img
+        src={Logo}
+        alt=""
+        className="dark:invert cursor-pointer"
+        onClick={handleHome}
+      />
       <div className="absolute right-3 flex items-center gap-2">
         <label
           htmlFor="colorMode"
@@ -73,7 +82,7 @@ export default function Header() {
                 />
               }
             >
-              <h1 onClick={handleDrop} id="유저명">
+              <h1 onClick={handleDrop} id="profile/유저명">
                 내 블로그
               </h1>
               <h1 onClick={handleDrop} id="follow">
