@@ -8,6 +8,8 @@ export default function Router() {
       <Routes>
         <Route element={<Layout />} path="/">
           <Route element={<_.Home />} path="" />
+          <Route element={<_.Profile />} path="profile/:name" />
+          <Route element={<_.Detail />} path="detail/:id" />
         </Route>
         <Route element={<Layout back />} path="/">
           <Route element={<_.Search />} path="search" />
