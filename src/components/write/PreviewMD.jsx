@@ -1,3 +1,6 @@
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 export default function Preview({ value }) {
   return (
     <div className="flex flex-col w-[50%] self-start gap-2 h-full overflow-auto dark:bg-neutral-700 pt-10 p-3">
@@ -15,8 +18,8 @@ export default function Preview({ value }) {
             );
           })}
       </div>
-      <h1 className="break-all whitespace-pre-wrap dark:text-neutral-100 h-full">
-        {value.contents}
+      <h1 className="dark:invert dark:text-[#000000] prose">
+        <Markdown remarkPlugins={remarkGfm}>{value.contents}</Markdown>
       </h1>
     </div>
   );
