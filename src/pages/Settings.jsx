@@ -9,28 +9,30 @@ export const Settings = () => {
         <h1 className="self-start text-2xl">계정 설정</h1>
         <Layout>
           <h1 className="text-xl">유저명</h1>
-          <Input className="w-5/6" value="Six-Standard" />
+          <Input className="w-4/6" value="Six-Standard" />
         </Layout>
         <Layout>
           <h1 className="text-xl">이메일</h1>
-          <Input className="w-5/6" value="test@gmail.com" />
+          <Input className="w-4/6" value="test@gmail.com" />
         </Layout>
         <Layout>
           <h1 className="text-xl">상태메세지</h1>
-          <Input className="w-5/6" value="Lorem Ipsum Dollar" />
+          <Input className="w-4/6" value="Lorem Ipsum Dollar" />
         </Layout>
         <Layout>
           <h1 className="text-xl">프로필 사진</h1>
-          <div className="flex items-center gap-3">
-            <h1 className="cursor-pointer">이미지 제거</h1>
-            <img
-              src="/prf.png"
-              alt=""
-              className="cursor-pointer rounded-full"
-            />
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-3">
+              <h1 className="cursor-pointer">이미지 제거</h1>
+              <img
+                src="/prf.png"
+                alt=""
+                className="cursor-pointer rounded-full"
+              />
+            </div>
+            <Button className="self-end">업데이트</Button>
           </div>
         </Layout>
-        <Button className="self-end">업데이트</Button>
       </div>
       <div className="flex flex-col gap-5 w-3/4">
         <h1 className="self-start text-2xl text-red-500">Danger Zone</h1>
