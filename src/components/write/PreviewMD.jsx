@@ -1,5 +1,6 @@
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import Tags from "../common/Tags";
 
 export default function Preview({ value }) {
   return (
@@ -11,15 +12,20 @@ export default function Preview({ value }) {
       <div className="flex gap-1 flex-wrap">
         {value.tags !== "" &&
           value.tags.split("_").map((i) => {
-            return (
-              <div className="px-3 border-[1px] border-neutral-950 dark:border-neutral-100 dark:text-neutral-100 rounded-full">
-                {i}
-              </div>
-            );
+            return <Tags>{i}</Tags>;
           })}
       </div>
       <h1 className="dark:invert dark:text-[#000000] prose">
-        <Markdown remarkPlugins={remarkGfm}>{value.contents}</Markdown>
+        <Markdown
+          remarkPlugins={remarkGfm}
+          components={{
+            img({ src }) {
+              return <img src={src} alt="" className="dark:invert" />;
+            },
+          }}
+        >
+          {value.contents}
+        </Markdown>
       </h1>
     </div>
   );
