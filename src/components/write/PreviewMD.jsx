@@ -11,8 +11,8 @@ export default function Preview({ value }) {
       <hr className="w-full dark:border-neutral-100" />
       <div className="flex gap-1 flex-wrap">
         {value.tags !== "" &&
-          value.tags.split("_").map((i) => {
-            return <Tags>{i}</Tags>;
+          value.tags.split("_").map((i, j) => {
+            return <Tags key={j}>{i}</Tags>;
           })}
       </div>
       <h1 className="dark:invert dark:text-[#000000] prose">

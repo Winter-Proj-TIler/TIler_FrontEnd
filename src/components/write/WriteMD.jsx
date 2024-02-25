@@ -1,11 +1,40 @@
 import { Icon } from "@iconify/react";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { uploadImg, uploadPost } from "../../api/post";
 
 export default function WriteMD({ value, action }) {
   const navigate = useNavigate();
-
   const handleBack = () => {
     navigate("/");
+  };
+
+  const { mutate: uploadImage } = useMutation({
+    mutationFn: (item) => uploadImg(item),
+    onSuccess: (res) => {
+      const e = {
+        target: {
+          id: "contents",
+          value: value.contents + `  \n![image](${res.data.url})`,
+        },
+      };
+      action(e);
+    },
+  });
+
+  const { mutate: upload } = useMutation({
+    mutationFn: () => uploadPost(value),
+    onSuccess: (res) => {
+      const { postId } = res.data.data;
+      navigate(`/detail/${postId}`);
+    },
+  });
+
+  const handleImage = (e) => {
+    const img = e.target.files[0];
+    const formData = new FormData();
+    formData.append("IMG", img);
+    uploadImage(formData);
   };
 
   return (
@@ -16,14 +45,27 @@ export default function WriteMD({ value, action }) {
           onClick={handleBack}
         >
           <Icon icon="maki:arrow" rotate="180deg" width="1rem" />
-          <h1>돌아가기</h1>
+          <h1 className="select-none">돌아가기</h1>
         </div>
-        <div className="flex gap-2">
-          <div className="flex items-center gap-1 cursor-pointer">
+        <div className="flex gap-2 select-none">
+          <input
+            className="hidden"
+            type="file"
+            accept="image/*"
+            id="image"
+            onChange={handleImage}
+          />
+          <label
+            htmlFor="image"
+            className="flex items-center gap-1 cursor-pointer"
+          >
             <Icon icon="material-symbols:image" width="1rem" />
             <h1>이미지 추가</h1>
-          </div>
-          <div className="flex items-center gap-1 cursor-pointer">
+          </label>
+          <div
+            className="flex items-center gap-1 cursor-pointer"
+            onClick={upload}
+          >
             <Icon icon="ic:round-upload" width="1rem" />
             <h1>업로드</h1>
           </div>
