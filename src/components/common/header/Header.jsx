@@ -3,14 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import useDark from "../../../hooks/useDark";
 import useModal from "../../../hooks/useModal";
 import Dropdown from "../Dropdown";
-import { cookie } from "../../../utils/cookies";
 import { Icon } from "@iconify/react";
 import SearchIcon from "../../search/SearchIcon";
 
 export default function Header() {
   const { dark, setDark } = useDark();
   const { open } = useModal();
-  const token = cookie.get("accessToken");
+  const token = localStorage.getItem("accessToken");
+  const userID = localStorage.getItem("userID");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -82,7 +82,7 @@ export default function Header() {
                 />
               }
             >
-              <h1 onClick={handleDrop} id="profile/유저명">
+              <h1 onClick={handleDrop} id={`profile/${userID}`}>
                 내 블로그
               </h1>
               <h1 onClick={handleDrop} id="follow">
