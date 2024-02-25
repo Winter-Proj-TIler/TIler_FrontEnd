@@ -3,6 +3,8 @@ import { calcDate } from "../../utils/calcDate";
 import Dot from "./Dot";
 import useDark from "../../hooks/useDark";
 import { useNavigate } from "react-router-dom";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export default function Post({ data }) {
   const { dark } = useDark();
@@ -22,20 +24,51 @@ export default function Post({ data }) {
         <img
           src={data.mainImg}
           alt=""
-          className="h-10rem rounded-tr-[0.45rem] rounded-tl-[0.45rem] object-cover"
+          className="w-full h-[10.2rem] rounded-tr-[0.45rem] rounded-tl-[0.45rem] object-cover"
         />
       )}
 
       <div
         className={`${
           data.mainImg ? "h-[calc(100%-10.18rem)]" : "h-full"
-        } flex flex-col justify-between p-3`}
+        } w-full flex flex-col justify-between p-3`}
       >
-        <div>
+        <div className="w-full h-[calc(100%-24px)]">
           <h1 className="text-lg font-bold dark:text-neutral-100">
             {data.title}
           </h1>
-          <h1 className="dark:text-neutral-100">{data.contents}</h1>
+          <Markdown
+            remarkPlugins={remarkGfm}
+            components={{
+              img() {
+                return;
+              },
+              h1() {
+                return;
+              },
+              h2() {
+                return;
+              },
+              h3() {
+                return;
+              },
+              h4() {
+                return;
+              },
+              h5() {
+                return;
+              },
+              h6() {
+                return;
+              },
+              p({ children }) {
+                return children;
+              },
+            }}
+            className="prose w-full mt-0 mb-0 text-[#000000] dark:invert text-overflow break-all"
+          >
+            {data.contents}
+          </Markdown>
         </div>
         <div className="flex items-center gap-1">
           <div className="flex items-center gap-1">
