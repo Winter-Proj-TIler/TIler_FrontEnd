@@ -10,7 +10,7 @@ export const calcDate = (date) => {
   } else if (diff === 2) {
     return "어제";
   } else if (diff < 8) {
-    return `${diff}일 전`;
+    return `${diff - 1}일 전`;
   } else {
     return date.split(" ")[0];
   }
