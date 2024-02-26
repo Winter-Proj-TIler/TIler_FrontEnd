@@ -1,9 +1,10 @@
 import { Icon } from "@iconify/react";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { uploadImg, uploadPost } from "../../api/post";
+import { updatePost, uploadImg, uploadPost } from "../../api/post";
+import { toast } from "react-toastify";
 
-export default function WriteMD({ value, action }) {
+export default function WriteMD({ value, action, id }) {
   const navigate = useNavigate();
   const handleBack = () => {
     navigate("/");
@@ -22,13 +23,32 @@ export default function WriteMD({ value, action }) {
     },
   });
 
-  const { mutate: upload } = useMutation({
-    mutationFn: () => uploadPost(value),
-    onSuccess: (res) => {
-      const { postId } = res.data.data;
-      navigate(`/detail/${postId}`);
-    },
-  });
+  const upload = async () => {
+    let load = toast.loading("업로드중입니다..");
+    let res = undefined;
+    if (!!id) {
+      res = await updatePost(id, value);
+    } else {
+      res = await uploadPost(value);
+    }
+    if (res) {
+      const { postId } = !!!id && res.data.data;
+      toast.update(load, {
+        render: "업로드되었습니다",
+        type: "success",
+        isLoading: false,
+        autoClose: 1000,
+      });
+      navigate(`/detail/${id ? id : postId}`);
+    } else {
+      toast.update(load, {
+        render: "업로드에 실패했습니다",
+        type: "success",
+        isLoading: false,
+        autoClose: 1000,
+      });
+    }
+  };
 
   const handleImage = (e) => {
     const img = e.target.files[0];
@@ -67,7 +87,7 @@ export default function WriteMD({ value, action }) {
             onClick={upload}
           >
             <Icon icon="ic:round-upload" width="1rem" />
-            <h1>업로드</h1>
+            <h1>{!!id ? "수정" : "업로드"}</h1>
           </div>
         </div>
       </div>
