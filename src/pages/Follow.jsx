@@ -17,9 +17,11 @@ export const Follow = () => {
   return (
     <div className="flex flex-col items-center gap-3 w-[68rem]">
       <h1 className="self-start text-2xl font-bold">팔로잉 관리</h1>
-      {data?.map((i) => (
-        <Following user={i} />
-      ))}
+      {data ? (
+        data.map((i) => <Following user={i} />)
+      ) : (
+        <h1>불러오는 중입니다..</h1>
+      )}
     </div>
   );
 };
