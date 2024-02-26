@@ -5,13 +5,16 @@ import useModal from "../../../hooks/useModal";
 import Dropdown from "../Dropdown";
 import { Icon } from "@iconify/react";
 import SearchIcon from "../../search/SearchIcon";
+import useUser from "../../../hooks/useUser";
+import { toast } from "react-toastify";
 
 export default function Header() {
   const { dark, setDark } = useDark();
   const { open } = useModal();
   const token = localStorage.getItem("accessToken");
-  const userID = localStorage.getItem("userID");
   const navigate = useNavigate();
+  const userID = localStorage.getItem("userID");
+  const { profileImg, reset } = useUser();
 
   const handleChange = (e) => {
     setDark(e.target.checked);
@@ -27,6 +30,14 @@ export default function Header() {
 
   const handleHome = () => {
     navigate("/");
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("userID");
+    toast.success("로그아웃되었습니다");
+    reset();
   };
 
   return (
@@ -63,7 +74,7 @@ export default function Header() {
         {token ? (
           <>
             <Link
-              to="write"
+              to="write/0"
               className="flex justify-center items-center w-9 h-9 rounded-full hover:bg-neutral-200 hover:dark:bg-neutral-700"
             >
               <Icon
@@ -76,7 +87,7 @@ export default function Header() {
               value={
                 <img
                   title="Six-Standard"
-                  src="/prf.png"
+                  src={profileImg || "/Default.png"}
                   alt=""
                   className="w-10 h-10 rounded-full"
                 />
@@ -91,10 +102,7 @@ export default function Header() {
               <h1 onClick={handleDrop} id="settings">
                 설정
               </h1>
-              <h1
-                onClick={() => console.log("useAuth hook 만들어서 완성시키기")}
-                className="text-red-400"
-              >
+              <h1 onClick={handleLogout} className="text-red-400">
                 로그아웃
               </h1>
             </Dropdown>
