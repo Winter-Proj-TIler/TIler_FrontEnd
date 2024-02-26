@@ -31,7 +31,7 @@ export const Home = () => {
   };
 
   return (
-    <div className="flex flex-col w-3/4">
+    <div className="flex flex-col gap-5 w-3/4">
       <div
         className="flex gap-1 self-center cursor-pointer"
         onClick={handleSort}
@@ -39,11 +39,15 @@ export const Home = () => {
         <Icon icon="flowbite:sort-outline" width="1.5rem" />
         <h1>{sort}</h1>
       </div>
-      <div className="grid grid-flow-row grid-cols-[repeat(auto-fill,_18rem)] justify-center gap-6 p-3 w-full">
-        {data?.map((i) => {
-          return <Post data={i} key={i.postId} />;
-        })}
-      </div>
+      {data ? (
+        <div className="grid grid-flow-row grid-cols-[repeat(auto-fill,_18rem)] justify-center gap-6 p-3 w-full">
+          {data.map((i) => (
+            <Post data={i} key={i.postId} />
+          ))}
+        </div>
+      ) : (
+        <h1 className="self-center">불러오는 중입니다..</h1>
+      )}
     </div>
   );
 };
