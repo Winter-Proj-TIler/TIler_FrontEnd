@@ -43,12 +43,14 @@ export const Search = () => {
       <div className="flex w-3/4 justify-center">
         {isLoading ? (
           <h1>불러오고 있습니다</h1>
-        ) : (
+        ) : data?.length !== 0 ? (
           <div className="grid grid-flow-row grid-cols-[repeat(auto-fill,_17rem)] justify-center gap-6 p-3 w-full">
-            {data?.map((i) => {
-              return <Post data={i} key={i.postId} />;
-            })}
+            {data?.map((i) => (
+              <Post data={i} key={i.postId} />
+            ))}
           </div>
+        ) : (
+          <h1>검색 결과가 없습니다</h1>
         )}
       </div>
     </div>
