@@ -23,15 +23,15 @@ export const searchUser = async (userID) => {
 };
 
 export const updateInfo = async (subPath, data) => {
-  return await instance.patch(`/${path}/${subPath}`, data);
+  return await instance.patch(`/${path}/update/${subPath}`, data);
 };
 
 export const refreshToken = async () => {
   return await instance.post(`/${path}/refresh`);
 };
 
-export const findPW = async () => {
-  return await instance.get(`/${path}/findpw`);
+export const findPW = async (data) => {
+  return await instance.post(`/${path}/findPW`, { email: data });
 };
 
 export const setProfile = async (data) => {
@@ -40,4 +40,12 @@ export const setProfile = async (data) => {
 
 export const resetProfile = async () => {
   return await instance.patch(`/${path}/profile/basic`);
+};
+
+export const googleAuth = async () => {
+  return await instance.post(`/auth/Google`);
+};
+
+export const githubAuth = async () => {
+  return await instance.post(`/auth/Github`);
 };

@@ -21,7 +21,11 @@ export const detailPost = async (postID) => {
 };
 
 export const updatePost = async (postID, data) => {
-  return await instance.patch(`/${path}/${postID}`, data);
+  const item = {
+    ...data,
+    tags: data.tags.split("_"),
+  };
+  return await instance.patch(`/${path}/${postID}`, item);
 };
 
 export const deletePost = async (postID) => {

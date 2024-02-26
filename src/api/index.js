@@ -1,4 +1,5 @@
 import axios from "axios";
+import { refreshToken } from "./user";
 
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_API_KEY,
@@ -13,7 +14,9 @@ instance.interceptors.request.use(
     }
     return res;
   },
-  (err) => console.log(err)
+  (err) => {
+    return err;
+  }
 );
 
 instance.interceptors.response.use(
@@ -21,7 +24,10 @@ instance.interceptors.response.use(
     return res;
   },
   (err) => {
-    // 토큰 만료 함수 넣을 예정
-    return err;
+    if (err.response.status === 401) {
+      // 리프레시 기능
+    } else {
+      return err;
+    }
   }
 );
