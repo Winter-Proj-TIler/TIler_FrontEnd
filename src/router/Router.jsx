@@ -16,7 +16,7 @@ export default function Router() {
           <Route element={<_.Follow />} path="follow" />
           <Route element={<_.Settings />} path="settings" />
         </Route>
-        <Route element={<_.Write />} path="write" />
+        <Route element={<_.Write />} path="write/:id" />
       </Routes>
     </BrowserRouter>
   );
