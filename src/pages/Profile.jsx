@@ -34,14 +34,14 @@ export const Profile = () => {
       <div className="flex justify-between items-center px-4">
         <div className="flex items-center gap-2">
           <img
-            src={data?.user.profileImg}
+            src={data?.user.profileImg || "/Default.png"}
             alt=""
             className="w-[100px] h-[100px] rounded-full"
           />
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-2xl">{data?.user.username}</h1>
-              {name !== userID && !!!isFollow && (
+              {!!userID && name !== userID && !!!isFollow && (
                 <Button className="px-2 py-0" onClick={mutate}>
                   팔로우
                 </Button>
@@ -51,16 +51,22 @@ export const Profile = () => {
           </div>
         </div>
         <div className="flex flex-col gap-2">
-          <h1>팔로워 {data?.followData.followerCnt}</h1>
-          <h1>팔로잉 {data?.followData.followingCnt}</h1>
+          <h1>팔로워 {data?.followData.followingCnt}</h1>
+          <h1>팔로잉 {data?.followData.followerCnt}</h1>
         </div>
       </div>
       <hr />
-      <div className="grid grid-flow-row grid-cols-[repeat(auto-fill,_18rem)] justify-center gap-6 p-3 w-full">
-        {data?.posts.map((i) => {
-          return <Post data={i} key={i.postId} />;
-        })}
-      </div>
+      {!!!data ? (
+        <h1 className="self-center">불러오는 중입니다..</h1>
+      ) : !!!data.length ? (
+        <h1 className="self-center">글이 없습니다</h1>
+      ) : (
+        <div className="grid grid-flow-row grid-cols-[repeat(auto-fill,_18rem)] justify-center gap-6 p-3 w-full">
+          {data?.posts.map((i) => {
+            return <Post data={i} key={i.postId} />;
+          })}
+        </div>
+      )}
     </div>
   );
 };
